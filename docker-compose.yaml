@@ -1,0 +1,55 @@
+version: '2'
+services:
+    nginx:
+        depends_on:
+            - php-fpm
+            - db
+            - pma
+        image: nginx
+        volumes:
+            - ./html:/etc/nginx/html
+            - ./nginx.conf:/etc/nginx/nginx.conf
+            - ./default.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - 8080:80
+        container_name: nginx
+    php-fpm:
+        image: php:7.2-fpm
+        links:
+            - db:db
+        volumes:
+            - ./html:/etc/nginx/html
+        expose:
+        - 9000
+        ports:
+            - 9000:9000
+        container_name: php-fpm
+    db:
+        image: mysql:5.7
+        restart: always
+        expose:
+        - 33060
+        ports:
+            - 33060:3306
+        volumes:
+           - ./mysql/data:/var/lib/mysql
+        environment:
+        - MYSQL_ROOT_PASSWORD=root
+    pma:
+        image: phpmyadmin/phpmyadmin
+        restart: always
+        depends_on:
+        - db
+        links:
+        - db
+        ports:
+        - 3306:80
+        environment:
+        - PMA_HOST=db
+        - PMA_PORTS=3306
+        - PMA_ARBITRARY=1
+        - PMA_USER=root
+        - PMA_PASSWORD=root
+        - VIRTUAL_HOST=localhost
+        - LETSENCRYPT_HOST=localhost
+        - LETSENCRYPT_EMAIL=494248656@qq.com
