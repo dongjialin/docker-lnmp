@@ -1,4 +1,4 @@
-# docker-lnmp
+# docker-lnmp-fastadmin
 用docker-compose制作的fastadmin后台模版的lnmp环境。
 因为初学docker，好多php扩展没有完善，请进入php容器中安装
 ```
