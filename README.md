@@ -15,7 +15,7 @@ apt-get update
 ```
 fastadmin后台安装插件，需要用到zip扩展，请先安装libzip-dev，再安装扩展
 ```
-apt-get install -y  libzip-dev
+apt-get install -y libzip-dev
 docker-php-ext-install 对应的扩展名称
 ```
 关于fastadmin，直接去官网下载完整版即可。
