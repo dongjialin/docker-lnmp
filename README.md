@@ -19,3 +19,6 @@ docker-php-ext-install 对应的扩展名称
 关于fastadmin，直接去官网下载完整版即可。
 安装的时候，要修改数据库的配置文件，是application/database.php，服务器地址改为db（与docker-compose.yaml中名称一致）。密码也改成docker-compose.yaml中设置的密码。
 修改完成，安装的时候，数据库地址也要写成db。
+
+新年快乐。
+新增redis和php.ini配置文件，略略减少的操作。。。
