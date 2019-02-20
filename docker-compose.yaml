@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
     nginx:
         depends_on:
@@ -15,11 +15,17 @@ services:
         ports:
             - 80:80
         container_name: nginx
+        networks:
+            - default
     php-fpm:
-        image: php:7.2-fpm
+        build:
+            context: .
+            args:
+                PHP_VERSION: php:7.2-fpm
         restart: always
         links:
             - db:db
+            - redis:redis
         volumes:
             - ./html:/etc/nginx/html:rw
             - ./conf/php.ini:/usr/local/etc/php/php.ini:ro
@@ -28,6 +34,8 @@ services:
         ports:
             - 9000:9000
         container_name: php-fpm
+        networks:
+            - default
     db:
         image: mysql:5.7
         restart: always
@@ -39,6 +47,8 @@ services:
            - ./mysql/data:/var/lib/mysql
         environment:
         - MYSQL_ROOT_PASSWORD=root
+        networks:
+            - default
     pma:
         image: phpmyadmin/phpmyadmin
         restart: always
@@ -66,4 +76,6 @@ services:
         restart: always
         entrypoint: ["redis-server", "/etc/redis.conf"]
         networks:
-          - default
+            - default
+networks:
+  default:
