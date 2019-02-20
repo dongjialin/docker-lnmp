@@ -1,6 +1,6 @@
 # docker-lnmp-fastadmin
 用docker-compose制作的fastadmin后台模版的lnmp环境。
-因为初学docker，好多php扩展没有完善，请进入php容器中安装
+~~因为初学docker，好多php扩展没有完善，请进入php容器中安装
 
 ~~- 注：关于php.ini的问题，请进入php容器中，修改/usr/local/etc/php/php.ini-development为php.ini。请先完成此步。否则配置xdebug等扩展，会很麻烦（对我来说😊）~~
 ```
@@ -22,3 +22,7 @@ docker-php-ext-install 对应的扩展名称
 
 新年快乐。
 新增redis和php.ini配置文件，略略减少的操作。。。
+
+2.20
+先在可以不用手动安装fastadmin所需要的扩展了🎉🎉🎉
+默认安装redis,zip,pdo_mysql
