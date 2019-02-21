@@ -25,4 +25,4 @@ docker-php-ext-install 对应的扩展名称
 
 2.20
 先在可以不用手动安装fastadmin所需要的扩展了🎉🎉🎉
-默认安装redis,zip,pdo_mysql
+默认安装gd,redis,zip,pdo_mysql
